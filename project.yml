@@ -1,0 +1,73 @@
+name: TumblrNPFPersistence
+
+options:
+  bundleIdPrefix: dev.jano.tumblrnpfpersistence
+  usesTabs: false
+  indentWidth: 4
+  tabWidth: 4
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: 15.4
+
+settings:
+    CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED: YES
+    SUPPORTS_MACCATALYST: false
+    TARGETED_DEVICE_FAMILY: "1,2"
+    
+packages:
+
+  TumblrNPF:
+    url: git@github.com:janodevorg/TumblrNPF.git
+    branch: main
+
+  CodableHelpers:
+    url: git@github.com:janodevorg/CodableHelpers.git
+    branch: main
+
+  CoreDataStack:
+    url: git@github.com:janodevorg/CoreDataStack.git
+    branch: main
+
+targets:
+
+  TumblrNPFPersistence:
+    dependencies:
+      - package: TumblrNPF
+      - package: CodableHelpers
+      - package: CoreDataStack
+    type: framework
+    platform: iOS
+    preBuildScripts:
+      - name: Swiftlint
+        script: |
+          echo "Running swiftlint"
+          cd ${PROJECT_DIR}
+          ./swiftlint.sh .
+    scheme:
+      testTargets:
+         - TumblrNPFPersistenceTests
+    settings:
+       CURRENT_PROJECT_VERSION: 1
+       INFOPLIST_FILE: targets/main/Info.plist
+       IPHONEOS_DEPLOYMENT_TARGET: 15.4
+       PRODUCT_BUNDLE_IDENTIFIER: dev.jano.tumblrnpfpersistence
+       PRODUCT_NAME: TumblrNPFPersistence
+    sources: 
+       - sources/main
+    type: framework
+
+  TumblrNPFPersistenceTests:
+    type: bundle.unit-test
+    platform: iOS
+    settings:
+      INFOPLIST_FILE: targets/tests/Info.plist
+      IPHONEOS_DEPLOYMENT_TARGET: 15.4
+      PRODUCT_BUNDLE_IDENTIFIER: dev.jano.tumblrnpfpersistence.tests
+      TEST_HOST:
+    sources:
+      - sources/tests
+    dependencies:
+      - target: TumblrNPFPersistence
+      - package: CodableHelpers
+      - package: CoreDataStack
+      - package: TumblrNPF

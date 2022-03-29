@@ -1,0 +1,11 @@
+{
+    "type": "ask",
+    "blocks": [0, 1],
+    "attribution": {
+        "type": "blog",
+        "url": "https://cyle.tumblr.com",
+        "blog": {
+            "Standard API Short Blog Info object": "goes here, for @cyle's blog"
+        }
+    }
+}

@@ -1,0 +1,56 @@
+{
+    "post": {
+        "id": 12345,
+        "is_paywalled": true,
+        "paywall_access": "non-member"
+    },
+    "blog": {
+        "name": "blog-that-has-a-paywall",
+        "subscription_plan": {
+            "description": "Hey I'm Jeff....",
+            "currency_code": "USD",
+            "monthly_price": "199",
+            "yearly_price": "2000",
+            "member_perks": [
+                "bonus content"
+            ],
+            "subscription_label": "Post+",
+            "checkout_labels": {
+                "monthly": "Subscribe for %s/month*",
+                "yearly": "%s/year*. 2 months FREE!",
+                "support": "Show Your Support"
+            },
+            "is_valid": true
+        }
+    },
+    "content": [
+        {
+            "type": "text",
+            "text": "before the paywall"
+        },
+        {
+            "type": "paywall",
+            "subtype": "cta",
+            "url": "https://tumblr.com/creator/acoolcreatorblog",
+            "title": "For Supporters",
+            "text": "Support %s by subscribing to their +Posts. As a supporter you'll get access to exclusive content and perks."
+        }
+    ],
+    "layout": [
+        {
+            "type": "rows",
+            "display": [
+                {
+                    "blocks": [
+                        0
+                    ]
+                },
+                {
+                    "blocks": [
+                        1
+                    ]
+                }
+            ]
+        }
+    ]
+}

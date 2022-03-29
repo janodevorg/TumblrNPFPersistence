@@ -1,0 +1,13 @@
+{
+    "description": "Subscribe to my blog!",
+    "currency_code": "USD",
+    "monthly_price": "199",
+    "yearly_price": null,
+    "member_perks": [ "Bonus Content", "creative prompts", "commissioned art" ],
+    "subscription_label": "Post+",
+    "checkout_labels": {
+        "monthly": "Subscribe for %s/month*",
+        "yearly": "%s/year*. 2 months FREE!",
+        "support": "Show your Support"
+    }
+}

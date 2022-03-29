@@ -1,0 +1,12 @@
+{
+    "width": 500,
+    "poster": {
+        "width": 500,
+        "type": "image/jpeg",
+        "url": "https://domain.com/poster.jpg",
+        "height": 400
+    },
+    "type": "image/gif",
+    "height": 400,
+    "url": "https://domain.com/mediaObject.gif"
+}

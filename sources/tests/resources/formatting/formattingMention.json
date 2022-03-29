@@ -1,0 +1,21 @@
+{
+    "id": 1234567891234567,
+    "content": [
+        {
+            "type": "text",
+            "text": "Shout out to @david",
+            "formatting": [
+                {
+                    "start": 13,
+                    "end": 19,
+                    "type": "mention",
+                    "blog": {
+                        "uuid": "t:123456abcdf",
+                        "name": "david",
+                        "url": "https://davidslog.com/",
+                    }
+                }
+            ]
+        }
+    ]
+}

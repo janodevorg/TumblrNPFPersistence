@@ -1,0 +1,13 @@
+{
+    "id": 1234567891234567,
+    "content": [
+        {
+            "type": "paywall",
+            "subtype": "divider",
+            "url": "https://tumblr.com/creator/acoolcreatorblog",
+            "text": "the teaser label",
+            "color": "#eeeee",
+            "is_visible": true
+        }
+    ]
+}

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AppAttributionObjectMO" representedClassName="AppAttributionObjectMO" parentEntity="AttributionObjectMO" syncable="YES" codeGenerationType="class">
+        <attribute name="appName" optional="YES" attributeType="String"/>
+        <attribute name="displayText" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="logo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="appAttributionObject" inverseEntity="MediaObjectMO"/>
+    </entity>
+    <entity name="AskLayoutMO" representedClassName="AskLayoutMO" parentEntity="LayoutMO" syncable="YES" codeGenerationType="class">
+        <attribute name="blocks" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[Int]"/>
+        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttributionObjectMO" inverseName="askLayout" inverseEntity="AttributionObjectMO"/>
+    </entity>
+    <entity name="AttributionObjectMO" representedClassName="AttributionObjectMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <relationship name="askLayout" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AskLayoutMO" inverseName="attribution" inverseEntity="AskLayoutMO"/>
+        <relationship name="audioContentAttribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AudioContentMO" inverseName="attribution" inverseEntity="AudioContentMO"/>
+        <relationship name="imageContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentMO" inverseName="attribution" inverseEntity="ImageContentMO"/>
+        <relationship name="videoContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoContentMO" inverseName="attribution" inverseEntity="VideoContentMO"/>
+    </entity>
+    <entity name="AudioContentMO" representedClassName="AudioContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="album" optional="YES" attributeType="String"/>
+        <attribute name="artist" optional="YES" attributeType="String"/>
+        <attribute name="embedHTML" optional="YES" attributeType="String"/>
+        <attribute name="embedURL" optional="YES" attributeType="URI"/>
+        <attribute name="provider" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttributionObjectMO" inverseName="audioContentAttribution" inverseEntity="AttributionObjectMO"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="audioContentMedia" inverseEntity="MediaObjectMO"/>
+        <relationship name="poster" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="audioContentPoster" inverseEntity="MediaObjectMO"/>
+    </entity>
+    <entity name="AvatarMO" representedClassName="AvatarMO" syncable="YES" codeGenerationType="class">
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="avatar" inverseEntity="BlogMO"/>
+    </entity>
+    <entity name="BasePostMO" representedClassName="BasePostMO" syncable="YES" codeGenerationType="class">
+        <attribute name="blogName" optional="YES" attributeType="String"/>
+        <attribute name="canDelete" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canEdit" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canLike" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canReblog" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canReply" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canSendInMessage" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="classification" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="displayAvatar" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="embedURL" optional="YES" attributeType="URI"/>
+        <attribute name="followed" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="idString" optional="YES" attributeType="String"/>
+        <attribute name="interactabilityReblog" optional="YES" attributeType="String"/>
+        <attribute name="isNSFW" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isPaywalled" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="likeCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="noteCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="nsfwScore" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="objectType" optional="YES" attributeType="String"/>
+        <attribute name="originalType" optional="YES" attributeType="String"/>
+        <attribute name="paywallAccess" optional="YES" attributeType="String"/>
+        <attribute name="postURL" optional="YES" attributeType="URI"/>
+        <attribute name="reblogCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="reblogKey" optional="YES" attributeType="String"/>
+        <attribute name="recommendedColor" optional="YES" attributeType="String"/>
+        <attribute name="recommendedSource" optional="YES" attributeType="String"/>
+        <attribute name="replyCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="shortURL" optional="YES" attributeType="URI"/>
+        <attribute name="shouldOpenInLegacy" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+        <attribute name="state" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <attribute name="timestamp" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="posts" inverseEntity="BlogMO"/>
+        <relationship name="content" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContentMO" inverseName="basePost" inverseEntity="ContentMO"/>
+        <relationship name="layout" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LayoutMO" inverseName="basePost" inverseEntity="LayoutMO"/>
+        <relationship name="paywallReblogView" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasePostMO" inverseName="paywallReblogViewInverse" inverseEntity="BasePostMO"/>
+        <relationship name="paywallReblogViewInverse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasePostMO" inverseName="paywallReblogView" inverseEntity="BasePostMO"/>
+        <relationship name="trail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TrailMO" inverseName="post" inverseEntity="TrailMO"/>
+    </entity>
+    <entity name="BlogAttributionObjectMO" representedClassName="BlogAttributionObjectMO" parentEntity="AttributionObjectMO" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="blogAttributionObject" inverseEntity="BlogMO"/>
+    </entity>
+    <entity name="BlogMO" representedClassName="BlogMO" syncable="YES" codeGenerationType="class">
+        <attribute name="allowSearchIndexing" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="ask" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="askPageTitle" optional="YES" attributeType="String"/>
+        <attribute name="canBeFollowed" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canSubmit" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="canSubscribe" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="followed" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isBlockedFromPrimary" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isHiddenFromBlogNetwork" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="isOptoutAds" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="paywallAccess" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="shareLikes" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="subscribed" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="uuid" optional="YES" attributeType="String"/>
+        <relationship name="avatar" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AvatarMO" inverseName="blog" inverseEntity="AvatarMO"/>
+        <relationship name="blogAttributionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogAttributionObjectMO" inverseName="blog" inverseEntity="BlogAttributionObjectMO"/>
+        <relationship name="blogs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogsMO" inverseName="blogs" inverseEntity="BlogsMO"/>
+        <relationship name="formatting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FormattingMO" inverseName="blog" inverseEntity="FormattingMO"/>
+        <relationship name="postAttributionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostAttributionObjectMO" inverseName="blog" inverseEntity="PostAttributionObjectMO"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostMO" inverseName="blog" inverseEntity="BasePostMO"/>
+        <relationship name="subscriptionPlan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubscriptionPlanMO" inverseName="blog" inverseEntity="SubscriptionPlanMO"/>
+        <relationship name="theme" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ThemeMO" inverseName="blog" inverseEntity="ThemeMO"/>
+        <relationship name="trail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrailMO" inverseName="blog" inverseEntity="TrailMO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="uuid"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="BlogsMO" representedClassName="BlogsMO" syncable="YES" codeGenerationType="class">
+        <attribute name="fields" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String: String]"/>
+        <attribute name="href" optional="YES" attributeType="String"/>
+        <attribute name="limit" optional="YES" attributeType="String"/>
+        <attribute name="method" optional="YES" attributeType="String"/>
+        <attribute name="offset" optional="YES" attributeType="String"/>
+        <relationship name="blogs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="blogs" inverseEntity="BlogMO"/>
+    </entity>
+    <entity name="CheckoutLabelsMO" representedClassName="CheckoutLabelsMO" syncable="YES" codeGenerationType="class">
+        <attribute name="monthly" optional="YES" attributeType="String"/>
+        <attribute name="support" optional="YES" attributeType="String"/>
+        <attribute name="yearly" optional="YES" attributeType="String"/>
+        <relationship name="subscriptionPlan" maxCount="1" deletionRule="Nullify" destinationEntity="SubscriptionPlanMO" inverseName="checkoutLabels" inverseEntity="SubscriptionPlanMO"/>
+    </entity>
+    <entity name="CondensedLayoutMO" representedClassName="CondensedLayoutMO" parentEntity="LayoutMO" syncable="YES" codeGenerationType="class">
+        <attribute name="blocks" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[Int]"/>
+        <attribute name="truncateAfter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="ContentMO" representedClassName="ContentMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="basePost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasePostMO" inverseName="content" inverseEntity="BasePostMO"/>
+        <relationship name="trail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrailMO" inverseName="content" inverseEntity="TrailMO"/>
+    </entity>
+    <entity name="FormattingMO" representedClassName="FormattingMO" syncable="YES" codeGenerationType="class">
+        <attribute name="end" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="font" optional="YES" attributeType="String"/>
+        <attribute name="hex" optional="YES" attributeType="String"/>
+        <attribute name="start" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="formatting" inverseEntity="BlogMO"/>
+        <relationship name="textContent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TextContentMO" inverseName="formatting" inverseEntity="TextContentMO"/>
+    </entity>
+    <entity name="ImageContentMO" representedClassName="ImageContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="altText" optional="YES" attributeType="String"/>
+        <attribute name="caption" optional="YES" attributeType="String"/>
+        <attribute name="colors" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String: String]"/>
+        <attribute name="feedbackToken" optional="YES" attributeType="String"/>
+        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttributionObjectMO" inverseName="imageContent" inverseEntity="AttributionObjectMO"/>
+        <relationship name="media" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="imageContentMedia" inverseEntity="MediaObjectMO"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="imageContentPoster" inverseEntity="MediaObjectMO"/>
+    </entity>
+    <entity name="LayoutMO" representedClassName="LayoutMO" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="type" attributeType="String"/>
+        <relationship name="basePost" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BasePostMO" inverseName="layout" inverseEntity="BasePostMO"/>
+        <relationship name="trail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TrailMO" inverseName="layout" inverseEntity="TrailMO"/>
+    </entity>
+    <entity name="LinkAttributionObjectMO" representedClassName="LinkAttributionObjectMO" parentEntity="AttributionObjectMO" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+    </entity>
+    <entity name="LinkContentMO" representedClassName="LinkContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="displayURL" optional="YES" attributeType="URI"/>
+        <attribute name="siteName" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="poster" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="linkContentPoster" inverseEntity="MediaObjectMO"/>
+    </entity>
+    <entity name="MediaObjectMO" representedClassName="MediaObjectMO" syncable="YES" codeGenerationType="class">
+        <attribute name="cropped" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="hasOriginalDimensions" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="hd" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="originalDimensionsMissing" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <relationship name="appAttributionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AppAttributionObjectMO" inverseName="logo" inverseEntity="AppAttributionObjectMO"/>
+        <relationship name="audioContentMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AudioContentMO" inverseName="media" inverseEntity="AudioContentMO"/>
+        <relationship name="audioContentPoster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AudioContentMO" inverseName="poster" inverseEntity="AudioContentMO"/>
+        <relationship name="imageContentMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentMO" inverseName="media" inverseEntity="ImageContentMO"/>
+        <relationship name="imageContentPoster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageContentMO" inverseName="poster" inverseEntity="ImageContentMO"/>
+        <relationship name="linkContentPoster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LinkContentMO" inverseName="poster" inverseEntity="LinkContentMO"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="posterInverse" inverseEntity="MediaObjectMO"/>
+        <relationship name="posterInverse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="poster" inverseEntity="MediaObjectMO"/>
+        <relationship name="videoContentFilmstrip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoContentMO" inverseName="filmstrip" inverseEntity="VideoContentMO"/>
+        <relationship name="videoContentMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoContentMO" inverseName="media" inverseEntity="VideoContentMO"/>
+        <relationship name="videoContentPoster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VideoContentMO" inverseName="poster" inverseEntity="VideoContentMO"/>
+    </entity>
+    <entity name="PaywallContentMO" representedClassName="PaywallContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="isVisible" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="subtype" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+    </entity>
+    <entity name="PaywallCTAMO" representedClassName="PaywallCTAMO" parentEntity="PaywallContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PaywallDisabledMO" representedClassName="PaywallDisabledMO" parentEntity="PaywallContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PaywallDividerMO" representedClassName="PaywallDividerMO" parentEntity="PaywallContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PostAttributionObjectMO" representedClassName="PostAttributionObjectMO" parentEntity="AttributionObjectMO" syncable="YES" codeGenerationType="class">
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="postAttributionObject" inverseEntity="BlogMO"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostMO" inverseName="postAttributionObject" inverseEntity="PostMO"/>
+    </entity>
+    <entity name="PostMO" representedClassName="PostMO" parentEntity="BasePostMO" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <relationship name="postAttributionObject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostAttributionObjectMO" inverseName="post" inverseEntity="PostAttributionObjectMO"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="RowLayoutMO" representedClassName="RowLayoutMO" syncable="YES" codeGenerationType="class">
+        <attribute name="blocks" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[Int]"/>
+        <attribute name="mode" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="rowsLayout" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RowsLayoutMO" inverseName="display" inverseEntity="RowsLayoutMO"/>
+    </entity>
+    <entity name="RowsLayoutMO" representedClassName="RowsLayoutMO" parentEntity="LayoutMO" syncable="YES" codeGenerationType="class">
+        <attribute name="truncateAfter" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <relationship name="display" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RowLayoutMO" inverseName="rowsLayout" inverseEntity="RowLayoutMO"/>
+    </entity>
+    <entity name="SubscriptionPlanMO" representedClassName="SubscriptionPlanMO" syncable="YES" codeGenerationType="class">
+        <attribute name="currencyCode" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="isValid" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="memberPerks" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
+        <attribute name="monthly" optional="YES" attributeType="String"/>
+        <attribute name="monthlyPrice" optional="YES" attributeType="String"/>
+        <attribute name="subscriptionLabel" optional="YES" attributeType="String"/>
+        <attribute name="support" optional="YES" attributeType="String"/>
+        <attribute name="yearly" optional="YES" attributeType="String"/>
+        <attribute name="yearlyPrice" optional="YES" attributeType="String"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="subscriptionPlan" inverseEntity="BlogMO"/>
+        <relationship name="checkoutLabels" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CheckoutLabelsMO" inverseName="subscriptionPlan" inverseEntity="CheckoutLabelsMO"/>
+    </entity>
+    <entity name="TextContentMO" representedClassName="TextContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="indentLevel" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="subtype" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="formatting" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FormattingMO" inverseName="textContent" inverseEntity="FormattingMO"/>
+    </entity>
+    <entity name="ThemeMO" representedClassName="ThemeMO" syncable="YES" codeGenerationType="class">
+        <attribute name="avatarShape" optional="YES" attributeType="String"/>
+        <attribute name="backgroundColor" attributeType="String"/>
+        <attribute name="bodyFont" optional="YES" attributeType="String"/>
+        <attribute name="headerBounds" optional="YES" attributeType="String"/>
+        <attribute name="headerFullHeight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="headerFullWidth" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="headerImage" optional="YES" attributeType="String"/>
+        <attribute name="headerImageFocused" optional="YES" attributeType="String"/>
+        <attribute name="headerImagePoster" optional="YES" attributeType="String"/>
+        <attribute name="headerImageScaled" optional="YES" attributeType="String"/>
+        <attribute name="headerStretch" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="linkColor" optional="YES" attributeType="String"/>
+        <attribute name="showAvatar" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="showDescription" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="showHeaderImage" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="showTitle" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="titleColor" optional="YES" attributeType="String"/>
+        <attribute name="titleFont" optional="YES" attributeType="String"/>
+        <attribute name="titleFontWeight" optional="YES" attributeType="String"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="theme" inverseEntity="BlogMO"/>
+    </entity>
+    <entity name="TrailMO" representedClassName="TrailMO" syncable="YES" codeGenerationType="class">
+        <attribute name="brokenBlogName" optional="YES" attributeType="String"/>
+        <relationship name="blog" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlogMO" inverseName="trail" inverseEntity="BlogMO"/>
+        <relationship name="content" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ContentMO" inverseName="trail" inverseEntity="ContentMO"/>
+        <relationship name="layout" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LayoutMO" inverseName="trail" inverseEntity="LayoutMO"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PostMO" inverseName="trail" inverseEntity="BasePostMO"/>
+    </entity>
+    <entity name="VideoContentMO" representedClassName="VideoContentMO" parentEntity="ContentMO" syncable="YES" codeGenerationType="class">
+        <attribute name="canAutoplayOnCellular" optional="YES" attributeType="Boolean" usesScalarValueType="NO"/>
+        <attribute name="embedHTML" optional="YES" attributeType="String"/>
+        <attribute name="embedURL" optional="YES" attributeType="URI"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="iframeHeight" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="iframeURL" optional="YES" attributeType="URI"/>
+        <attribute name="iframeWidth" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="provider" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <relationship name="attribution" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AttributionObjectMO" inverseName="videoContent" inverseEntity="AttributionObjectMO"/>
+        <relationship name="filmstrip" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="videoContentFilmstrip" inverseEntity="MediaObjectMO"/>
+        <relationship name="media" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="videoContentMedia" inverseEntity="MediaObjectMO"/>
+        <relationship name="poster" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaObjectMO" inverseName="videoContentPoster" inverseEntity="MediaObjectMO"/>
+    </entity>
+    <elements>
+        <element name="AppAttributionObjectMO" positionX="-405" positionY="432" width="128" height="104"/>
+        <element name="AskLayoutMO" positionX="-432" positionY="405" width="128" height="59"/>
+        <element name="AttributionObjectMO" positionX="-441" positionY="396" width="128" height="89"/>
+        <element name="AudioContentMO" positionX="-432" positionY="405" width="128" height="179"/>
+        <element name="AvatarMO" positionX="-596.861083984375" positionY="117.4162139892578" width="128" height="89"/>
+        <element name="BasePostMO" positionX="38.2227783203125" positionY="53.85562133789062" width="128" height="674"/>
+        <element name="BlogAttributionObjectMO" positionX="-414" positionY="423" width="128" height="74"/>
+        <element name="BlogMO" positionX="-248.074462890625" positionY="241.4019470214844" width="128" height="419"/>
+        <element name="BlogsMO" positionX="-450" positionY="387" width="128" height="119"/>
+        <element name="CheckoutLabelsMO" positionX="-756" positionY="198" width="128" height="89"/>
+        <element name="CondensedLayoutMO" positionX="-423" positionY="414" width="128" height="59"/>
+        <element name="ContentMO" positionX="-459" positionY="378" width="128" height="74"/>
+        <element name="FormattingMO" positionX="-432" positionY="414" width="128" height="149"/>
+        <element name="ImageContentMO" positionX="-441" positionY="396" width="128" height="134"/>
+        <element name="LayoutMO" positionX="-450" positionY="387" width="128" height="74"/>
+        <element name="LinkAttributionObjectMO" positionX="-423" positionY="414" width="128" height="59"/>
+        <element name="LinkContentMO" positionX="-450" positionY="387" width="128" height="134"/>
+        <element name="MediaObjectMO" positionX="-459" positionY="378" width="128" height="314"/>
+        <element name="PaywallContentMO" positionX="-423" positionY="414" width="128" height="74"/>
+        <element name="PaywallCTAMO" positionX="-405" positionY="432" width="128" height="59"/>
+        <element name="PaywallDisabledMO" positionX="-414" positionY="423" width="128" height="59"/>
+        <element name="PaywallDividerMO" positionX="-459" positionY="378" width="128" height="59"/>
+        <element name="PostAttributionObjectMO" positionX="-432" positionY="405" width="128" height="89"/>
+        <element name="PostMO" positionX="-147.4664306640625" positionY="87.01765441894531" width="128" height="73"/>
+        <element name="RowLayoutMO" positionX="-441" positionY="396" width="128" height="89"/>
+        <element name="RowsLayoutMO" positionX="-414" positionY="423" width="128" height="59"/>
+        <element name="SubscriptionPlanMO" positionX="-435.9700927734375" positionY="547.581787109375" width="128" height="209"/>
+        <element name="TextContentMO" positionX="-441" positionY="405" width="128" height="89"/>
+        <element name="ThemeMO" positionX="-951.8621215820312" positionY="263.5469055175781" width="128" height="329"/>
+        <element name="TrailMO" positionX="-405" positionY="432" width="128" height="14"/>
+        <element name="VideoContentMO" positionX="-450" positionY="387" width="128" height="239"/>
+    </elements>
+</model>
