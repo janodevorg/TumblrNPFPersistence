@@ -25,9 +25,6 @@ let package = Package(
                 .product(name: "TumblrNPF", package: "TumblrNPF")
             ],
             path: "sources/main",
-            exclude: [
-                "resource_bundle_accessor.swift"
-            ],
             resources: [
                 .process("resources/DataModel.xcdatamodeld")
             ]

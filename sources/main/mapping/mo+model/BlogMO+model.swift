@@ -1,4 +1,5 @@
 import CoreData
+import CodableHelpers
 import Foundation
 import os
 import TumblrNPF
@@ -76,7 +77,7 @@ public extension BlogMO
         self.isBlockedFromPrimary = model.isBlockedFromPrimary.flatMap { $0 as NSNumber }
         self.isHiddenFromBlogNetwork = model.isHiddenFromBlogNetwork.flatMap { $0 as NSNumber }
         self.isOptoutAds = model.isOptoutAds.flatMap { $0 as NSNumber }
-        self.paywallAccess = model.paywallAccess.flatMap { $0 as NSNumber }
+        self.paywallAccess = model.paywallAccess?.string
         self.shareLikes = model.shareLikes.flatMap { $0 as NSNumber }
         self.subscribed = model.subscribed.flatMap { $0 as NSNumber }
     }

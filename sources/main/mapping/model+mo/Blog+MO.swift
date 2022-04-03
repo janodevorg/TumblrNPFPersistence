@@ -1,3 +1,4 @@
+import CodableHelpers
 import Foundation
 import TumblrNPF
 
@@ -22,7 +23,7 @@ public extension Blog {
                   isHiddenFromBlogNetwork: mo.isHiddenFromBlogNetwork?.boolValue,
                   isOptoutAds: mo.isOptoutAds?.boolValue,
                   name: mo.name,
-                  paywallAccess: mo.paywallAccess?.boolValue,
+                  paywallAccess: mo.paywallAccess.flatMap { CodableBoolOrString(stringLiteral: $0) },
                   posts: posts,
                   shareLikes: mo.shareLikes?.boolValue,
                   subscribed: mo.subscribed?.boolValue,
