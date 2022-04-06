@@ -18,15 +18,15 @@ packages:
 
   TumblrNPF:
     url: git@github.com:janodevorg/TumblrNPF.git
-    branch: main
+    from: 1.0.0
 
   CodableHelpers:
     url: git@github.com:janodevorg/CodableHelpers.git
-    branch: main
+    from: 1.0.0
 
   CoreDataStack:
     url: git@github.com:janodevorg/CoreDataStack.git
-    branch: main
+    from: 1.0.0
 
 targets:
 
