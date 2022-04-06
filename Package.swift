@@ -11,9 +11,9 @@ let package = Package(
         .library(name: "TumblrNPFPersistenceStatic", type: .static, targets: ["TumblrNPFPersistence"])
     ],
     dependencies: [
-        .package(url: "git@github.com:janodevorg/CodableHelpers.git", branch: "main"),
-        .package(url: "git@github.com:janodevorg/CoreDataStack.git", branch: "main"),
-        .package(url: "git@github.com:janodevorg/TumblrNPF.git", branch: "main"),
+        .package(url: "git@github.com:janodevorg/CodableHelpers.git", from: "1.0.0"),
+        .package(url: "git@github.com:janodevorg/CoreDataStack.git", from: "1.0.0"),
+        .package(url: "git@github.com:janodevorg/TumblrNPF.git", from: "1.0.0"),
         .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.0.0")
     ],
     targets: [
