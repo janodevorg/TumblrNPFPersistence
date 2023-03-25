@@ -21,7 +21,7 @@ let package = Package(
             name: "TumblrNPFPersistence",
             dependencies: [
                 .product(name: "CoreDataStackDynamic", package: "CoreDataStack"),
-                .product(name: "CodableHelpers", package: "CodableHelpers"),
+                .product(name: "CodableHelpersDynamic", package: "CodableHelpers"),
                 .product(name: "TumblrNPF", package: "TumblrNPF")
             ],
             path: "sources/main",
