@@ -22,7 +22,7 @@ let package = Package(
             dependencies: [
                 .product(name: "CoreDataStackDynamic", package: "CoreDataStack"),
                 .product(name: "CodableHelpersDynamic", package: "CodableHelpers"),
-                .product(name: "TumblrNPF", package: "TumblrNPF")
+                .product(name: "TumblrNPFDynamic", package: "TumblrNPF")
             ],
             path: "sources/main",
             resources: [
