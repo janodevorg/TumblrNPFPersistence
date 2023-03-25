@@ -59,17 +59,6 @@ struct Equality
 
     private func check(_ model1: Any, _ model2: Any) -> Result<(), EqualityError>  {
 
-        var model1Mirror = Mirror(reflecting: model1)
-        var model2Mirror = Mirror(reflecting: model2)
-
-        if let managed1 = model1 as? NSManagedObject {
-            model1Mirror = managed1.customMirror
-        }
-
-        if let managed2 = model2 as? NSManagedObject {
-            model2Mirror = managed2.customMirror
-        }
-
         log.trace("Model1: \(String(describing: model1))")
         log.trace("Model2: \(String(describing: model2))")
 
@@ -123,7 +112,7 @@ struct Equality
                     && (String(describing: dict2[key]) == "Optional(nil)") {
                     return .success(())
                 }
-                return .failure(.unknownTypeLabeled(key, dict1[key], dict2[key]))
+                return .failure(.unknownTypeLabeled(key, dict1[key] as Any, dict2[key] as Any))
             }
         }
         return .success(())

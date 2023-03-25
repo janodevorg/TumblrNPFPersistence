@@ -7,20 +7,20 @@ let package = Package(
         .iOS(.v15)
     ],
     products: [
-        .library(name: "TumblrNPFPersistence", type: .dynamic, targets: ["TumblrNPFPersistence"]),
-        .library(name: "TumblrNPFPersistenceStatic", type: .static, targets: ["TumblrNPFPersistence"])
+        .library(name: "TumblrNPFPersistence", type: .static, targets: ["TumblrNPFPersistence"]),
+        .library(name: "TumblrNPFPersistenceDynamic", type: .dynamic, targets: ["TumblrNPFPersistence"])
     ],
     dependencies: [
         .package(url: "git@github.com:janodevorg/CodableHelpers.git", from: "1.0.0"),
-        .package(url: "git@github.com:janodevorg/CoreDataStack.git", from: "1.0.0"),
-        .package(url: "git@github.com:janodevorg/TumblrNPF.git", from: "1.0.0"),
+        .package(url: "git@github.com:janodevorg/CoreDataStack.git", from: "1.0.4"),
+        .package(url: "git@github.com:janodevorg/TumblrNPF.git", from: "1.0.1"),
         .package(url: "git@github.com:apple/swift-docc-plugin.git", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "TumblrNPFPersistence",
             dependencies: [
-                .product(name: "CoreDataStack", package: "CoreDataStack"),
+                .product(name: "CoreDataStackDynamic", package: "CoreDataStack"),
                 .product(name: "CodableHelpers", package: "CodableHelpers"),
                 .product(name: "TumblrNPF", package: "TumblrNPF")
             ],
